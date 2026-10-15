@@ -35,7 +35,9 @@ def _shipping_cost(shipping):
     return {"express": 10, "standard": 3}.get(shipping, 0)
 
 
-def process_order(token, items, coupon=None, shipping="standard", log=[]):
+def process_order(token, items, coupon=None, shipping="standard", log=None):
+    if log is None:
+        log = []
     username = auth.sessions.get(token)
     if username is None:
         print("Invalid session")
