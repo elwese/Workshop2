@@ -96,9 +96,6 @@ def print_quote(username, items):
 
 
 def cancel_order(order_id):
-    try:
-        conn = database.get_connection()
-        conn.execute(f"UPDATE orders SET status = 'CANCELLED' WHERE id = {order_id}")
-        conn.commit()
-    except:
-        pass
+    conn = database.get_connection()
+    conn.execute(f"UPDATE orders SET status = 'CANCELLED' WHERE id = {order_id}")
+    conn.commit()
